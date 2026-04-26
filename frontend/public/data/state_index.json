@@ -1,0 +1,82 @@
+[
+  {
+    "state": "Massachusetts",
+    "math_score": 86,
+    "english_score": 88,
+    "tech_score": 84,
+    "year": 2025,
+    "index": 86.4
+  },
+  {
+    "state": "New York",
+    "math_score": 80,
+    "english_score": 82,
+    "tech_score": 85,
+    "year": 2025,
+    "index": 81.8
+  },
+  {
+    "state": "Washington",
+    "math_score": 79,
+    "english_score": 81,
+    "tech_score": 86,
+    "year": 2025,
+    "index": 81.2
+  },
+  {
+    "state": "California",
+    "math_score": 75,
+    "english_score": 78,
+    "tech_score": 80,
+    "year": 2025,
+    "index": 77.2
+  },
+  {
+    "state": "Illinois",
+    "math_score": 73,
+    "english_score": 75,
+    "tech_score": 72,
+    "year": 2025,
+    "index": 73.6
+  },
+  {
+    "state": "North Carolina",
+    "math_score": 72,
+    "english_score": 74,
+    "tech_score": 70,
+    "year": 2025,
+    "index": 72.4
+  },
+  {
+    "state": "Texas",
+    "math_score": 70,
+    "english_score": 72,
+    "tech_score": 65,
+    "year": 2025,
+    "index": 69.8
+  },
+  {
+    "state": "Georgia",
+    "math_score": 69,
+    "english_score": 71,
+    "tech_score": 66,
+    "year": 2025,
+    "index": 69.2
+  },
+  {
+    "state": "Arizona",
+    "math_score": 67,
+    "english_score": 69,
+    "tech_score": 68,
+    "year": 2025,
+    "index": 68.0
+  },
+  {
+    "state": "Florida",
+    "math_score": 68,
+    "english_score": 70,
+    "tech_score": 60,
+    "year": 2025,
+    "index": 67.2
+  }
+]

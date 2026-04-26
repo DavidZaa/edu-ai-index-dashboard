@@ -1,0 +1,19 @@
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Environment / secrets
+.env
+.env.*
+frontend/.env
+frontend/.env.*
+
+# OS / editor
+.DS_Store
+.vscode/
+__pycache__/
+*.pyc
+
+# Generated outputs can be committed for the MVP demo, but ignore backups
+*.bak
