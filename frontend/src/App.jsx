@@ -47,10 +47,10 @@ export default function App() {
     <div className="container">
       <div className="header">
         <div>
-          <h1>EduCity AI Index</h1>
+          <h1>placeholder</h1>
           <p className="subtitle">
-            Prototype dashboard comparing <b>education outcomes</b> and{" "}
-            <b>technology readiness</b> across states.
+            placeholder placeholder placeholder <b>placeholder </b> and{" "}
+            <b>placeholder </b> placeholder .
           </p>
         </div>
         <span className="badge">MVP: CSV → Python → JSON → React</span>
@@ -59,8 +59,7 @@ export default function App() {
       <div className="card hero-card">
         <h2>Search a state</h2>
         <p className="small">
-          This MVP uses sample state-level data. Later, the project can replace the
-          sample file with real public datasets.
+          describe what the point of the project is
         </p>
 
         <div className="row">
@@ -131,23 +130,8 @@ export default function App() {
         )}
       </div>
 
-      <div className="card grid-card">
-        <div>
-          <h2>What to add next</h2>
-          <p className="small">
-            Suggested visuals for later milestones: a bar chart ranking states by
-            index, score breakdown charts for Math vs English vs Tech, and a
-            Methodology page explaining datasets and limitations.
-          </p>
-        </div>
-        <div>
-          <h2>Why this is credible</h2>
-          <p className="small">
-            The AI should explain results only after the data pipeline calculates
-            them. The numbers come from structured data, not from AI guesses.
-          </p>
-        </div>
-      </div>
+      
+
     </div>
   );
 }

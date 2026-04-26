@@ -46,10 +46,7 @@ def validate_ranges(
     lo: float = 0.0,
     hi: float = 100.0,
 ) -> None:
-    """
-    Prototype assumption: scores are already comparable on a 0–100 scale.
-    This function stops the build if data is missing, non-numeric, or out of range.
-    """
+
     bad_rows = df[df[cols].isna().any(axis=1)]
     if not bad_rows.empty:
         raise ValueError(
@@ -115,7 +112,7 @@ def main() -> int:
     with open(frontend_public_json, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
 
-    print("✅ Build complete")
+    print("Build complete")
     print(f"- Wrote: {processed_csv}")
     print(f"- Wrote: {frontend_public_json}")
     print("\nTop 5 by index:")
