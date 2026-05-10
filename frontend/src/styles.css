@@ -158,3 +158,41 @@ h2 {
   border-radius: 12px;
   padding: 12px;
 }
+
+.chartBox {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  background: white;
+}
+
+.reportBox {
+  margin-top: 30px;
+  padding: 22px;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  background: #f8fbff;
+}
+
+.reportBox h2 {
+  margin-top: 0;
+}
+
+.reportBox p {
+  line-height: 1.6;
+}
+
+.comparisonBox {
+  margin-top: 30px;
+  padding: 22px;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  background: white;
+}
+
+.comparisonBox select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
