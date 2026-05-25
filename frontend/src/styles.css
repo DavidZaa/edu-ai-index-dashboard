@@ -196,3 +196,23 @@ h2 {
   border-radius: 8px;
   border: 1px solid #ccc;
 }
+
+.chartControls {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.chartControls button {
+  padding: 8px 14px;
+  border: 1px solid #d0d7e2;
+  background: white;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chartControls .activeButton {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}

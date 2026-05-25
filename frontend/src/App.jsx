@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BarChart,
   Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   Tooltip,
@@ -21,6 +23,7 @@ export default function App() {
   const [status, setStatus] = useState({ loading: true, error: null });
   const [compareA, setCompareA] = useState("California");
   const [compareB, setCompareB] = useState("New York");
+  const [chartType, setChartType] = useState("bar");
 
 
   useEffect(() => {
@@ -58,6 +61,32 @@ export default function App() {
   const stateA = data.find((row) => row.state === compareA);
   const stateB = data.find((row) => row.state === compareB);
   const stateNames = data.map((row) => row.state);
+
+  const comparisonData =
+  stateA && stateB
+    ? [
+        {
+          metric: "Math",
+          [stateA.state]: stateA.math_score,
+          [stateB.state]: stateB.math_score,
+        },
+        {
+          metric: "English",
+          [stateA.state]: stateA.english_score,
+          [stateB.state]: stateB.english_score,
+        },
+        {
+          metric: "Tech",
+          [stateA.state]: stateA.tech_score,
+          [stateB.state]: stateB.tech_score,
+        },
+        {
+          metric: "Index",
+          [stateA.state]: stateA.index,
+          [stateB.state]: stateB.index,
+        },
+      ]
+    : [];
 
   return (
     <div className="container">
@@ -143,64 +172,97 @@ export default function App() {
             </p>
 
             <div className="chartBox">
-  <h2>Top States by EduCity Index</h2>
-  <ResponsiveContainer width="100%" height={300}>
-    <BarChart data={top}>
-      <XAxis dataKey="state" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="index" />
-    </BarChart>
-  </ResponsiveContainer>
-</div>
+            <h2>Top States by EduCity Index</h2>
 
-{selectedState && (
-  <div className="reportBox">
-    <h2>AI-Generated Report Preview</h2>
-    <h3>{selectedState.state}</h3>
+            <div className="chartControls">
+              <button
+                className={chartType === "bar" ? "activeButton" : ""}
+                onClick={() => setChartType("bar")}
+              >
+                Bar Chart
+              </button>
 
-    <p>
-      {selectedState.state} has an overall EduCity Index of{" "}
-      <b>{formatNum(selectedState.index)}</b>. Its math score is{" "}
-      <b>{formatNum(selectedState.math_score)}</b>, English score is{" "}
-      <b>{formatNum(selectedState.english_score)}</b>, and technology readiness
-      score is <b>{formatNum(selectedState.tech_score)}</b>.
-    </p>
+              <button
+                className={chartType === "line" ? "activeButton" : ""}
+                onClick={() => setChartType("line")}
+              >
+                Line Chart
+              </button>
+            </div>
 
-    <p>
-      This prototype uses education and technology proxy indicators to compare
-      regions. It does not prove that AI directly caused changes in education
-      outcomes.
-    </p>
-  </div>
-)}
+            <ResponsiveContainer width="100%" height={300}>
+              {chartType === "bar" ? (
+                <BarChart data={top}>
+                  <XAxis dataKey="state" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="index" />
+                </BarChart>
+              ) : (
+                <LineChart data={top}>
+                  <XAxis dataKey="state" />
+                  <YAxis />
+                  <Tooltip />
+                  <Line type="monotone" dataKey="index" strokeWidth={2} />
+                </LineChart>
+              )}
+            </ResponsiveContainer>
+          </div>
 
-<div className="comparisonBox">
-  <h2>Compare Two States</h2>
+          {selectedState && (
+            <div className="reportBox">
+              <h2>AI-Generated Report Preview</h2>
+              <h3>{selectedState.state}</h3>
 
-  <div className="row">
-    <select value={compareA} onChange={(e) => setCompareA(e.target.value)}>
-      {stateNames.map((state) => (
-        <option key={state} value={state}>{state}</option>
-      ))}
-    </select>
+              <p>
+                {selectedState.state} has an overall EduCity Index of{" "}
+                <b>{formatNum(selectedState.index)}</b>. Its math score is{" "}
+                <b>{formatNum(selectedState.math_score)}</b>, English score is{" "}
+                <b>{formatNum(selectedState.english_score)}</b>, and technology readiness
+                score is <b>{formatNum(selectedState.tech_score)}</b>.
+              </p>
 
-    <select value={compareB} onChange={(e) => setCompareB(e.target.value)}>
-      {stateNames.map((state) => (
-        <option key={state} value={state}>{state}</option>
-      ))}
-    </select>
-  </div>
+            </div>
+          )}
 
-  {stateA && stateB && (
-    <p>
-      <b>{stateA.state}</b> has an index of <b>{formatNum(stateA.index)}</b>,
-      while <b>{stateB.state}</b> has an index of <b>{formatNum(stateB.index)}</b>.
-      The difference is{" "}
-      <b>{formatNum(Math.abs(stateA.index - stateB.index))}</b> points.
-    </p>
-  )}
-</div>
+          <div className="comparisonBox">
+            <h2>Compare Two States</h2>
+
+            <div className="row">
+              <select value={compareA} onChange={(e) => setCompareA(e.target.value)}>
+                {stateNames.map((state) => (
+                  <option key={state} value={state}>{state}</option>
+                ))}
+              </select>
+
+              <select value={compareB} onChange={(e) => setCompareB(e.target.value)}>
+                {stateNames.map((state) => (
+                  <option key={state} value={state}>{state}</option>
+                ))}
+              </select>
+            </div>
+
+            {stateA && stateB && (
+              <p>
+                <b>{stateA.state}</b> has an index of <b>{formatNum(stateA.index)}</b>,
+                while <b>{stateB.state}</b> has an index of <b>{formatNum(stateB.index)}</b>.
+                The difference is{" "}
+                <b>{formatNum(Math.abs(stateA.index - stateB.index))}</b> points.
+              </p>
+            )}
+          </div>
+
+          {stateA && stateB && (
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={comparisonData}>
+                <XAxis dataKey="metric" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey={stateA.state} />
+                <Bar dataKey={stateB.state} />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
           </>
         )}
       </div>
